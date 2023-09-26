@@ -1,0 +1,42 @@
+# Compiled Python files
+__pycache__/
+*.pyc
+
+# Virtual environment
+venv/
+env/
+*.env
+
+# Development/IDE files
+.idea/
+.vscode/
+
+# PyCharm specific files
+*.iml
+.idea_modules/
+*.egg-info/
+
+# Logs
+*.log
+
+logs/
+
+# Temporary files
+*.tmp
+
+# macOS files
+.DS_Store
+
+# Compiled files
+dist/
+build/
+
+# Other generated files and directories
+__generated__/
+node_modules/
+
+# Database files
+*.db
+*.sqlite3
+*.sqlite
+*.pdb
