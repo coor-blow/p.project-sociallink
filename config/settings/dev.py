@@ -4,7 +4,7 @@ import environ
 
 env = environ.Env()
 
-environ.Env.read_env(os.path.join(BASE_DIR/ '.env'))
+environ.Env.read_env(str(BASE_DIR/ '.env'))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = env.str('SECRET_KEY')
@@ -26,5 +26,8 @@ DATABASES = {
         'PASSWORD' : env.str('DB_PWD'),
         'HOST' :env.str('DB_HOST'),
         'PORT' :env.str('DB_PORT'), 
+         'OPTIONS': {
+            'options': '-c search_path=socialschema',
+        },
     }
 }

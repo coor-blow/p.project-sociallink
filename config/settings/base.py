@@ -1,5 +1,6 @@
 from pathlib import Path
 import os
+import environ
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
@@ -34,6 +35,8 @@ CUSTOM_APPS = ['apps.landing',
                'allauth.account',
                'allauth.socialaccount',
                'crispy_forms',
+               'apps.core',
+            
                ]
                                 
 
@@ -51,6 +54,9 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'allauth.account.middleware.AccountMiddleware',
+    "apps.core.middleware.logging.simple_logging_middleware",
+    "apps.core.middleware.logging.ViewExecutionTimeMiddleware",
+    "apps.core.middleware.logging.ViewExecutionTimeSecondMiddleware",
     ]
 
 ROOT_URLCONF = 'config.urls'
@@ -104,10 +110,29 @@ SITE_ID = 1
 
 
 STATIC_URL = '/static/'
-
-
-CRISPY_TEMPLATE_PACK = 'bootstrap4'
+# STATICFILES_DIRS = [str(BASE_DIR / "static")]
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+# AUTH_USER_MODEL = "user.User"
+# CRISPY_TEMPLATE_PACK = 'bootstrap4'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-LOGIN_REDIRECT_URL = 'index'
+LOGIN_REDIRECT_URL = '../../apps/landing/urls.py'
 ACCOUNT_EMAIL_REQUIRED = True
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'file': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': '/path/to/your/log/file.log',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['file'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+    },
+}

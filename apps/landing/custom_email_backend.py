@@ -1,7 +1,6 @@
 from django.core.mail.backends.smtp import EmailBackend
 from django.core.mail.message import EmailMessage
-from yourapp.models import EmailLog  # Replace 'yourapp' with your app's name
-
+from apps.landing.models import EmailLog 
 class DatabaseEmailBackend(EmailBackend):
     def send_messages(self, email_messages):
         """
