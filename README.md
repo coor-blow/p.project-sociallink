@@ -2,7 +2,7 @@
 
 # Social Link - A Social Media App
 
-
+## note: the program is still being worked on and is not finished
 ## Introduction
 Social Link is a social media application that allows you to connect with friends, share posts, and send messages. This README provides an overview of the project, how to set it up, and its key features.
 
